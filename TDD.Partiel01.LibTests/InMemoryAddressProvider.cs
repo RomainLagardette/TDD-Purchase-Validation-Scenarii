@@ -7,9 +7,15 @@ namespace TDD.Partiel01.LibTests
 {
     public class InMemoryAddressProvider : IAddressProvider
     {
+        public List<string> existingAddresses = new List<string>
+        {
+            "98 Avenue du saucisson",
+            "77 Avenue du Jambon"
+        };
+
         public bool Exist(string line1)
         {
-            return line1 == "98 Avenue du saucisson" || line1 == "77 Avenue du Jambon";
+            return existingAddresses.Contains(line1);
         }
     }
 }
