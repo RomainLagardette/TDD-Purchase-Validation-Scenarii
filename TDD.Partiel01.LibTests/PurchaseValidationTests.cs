@@ -19,4 +19,12 @@ namespace TDD.Partiel01.LibTests
             Assert.False(isValid);
         }
     }
+
+    internal class Purchase
+    {
+        internal static bool Confirm()
+        {
+            return false;
+        }
+    }
 }
