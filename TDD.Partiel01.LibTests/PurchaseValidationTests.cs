@@ -14,7 +14,7 @@ namespace TDD.Partiel01.LibTests
         [Fact]
         public void AnnaBuyButBankRejectPayment()
         {
-            PurchaseResult purchaseResult = new Purchase(null).Confirm();
+            PurchaseResult purchaseResult = new Purchase().Confirm();
 
             Assert.False(purchaseResult.IsValid);
             Assert.NotEmpty(purchaseResult.Error);
@@ -52,6 +52,22 @@ namespace TDD.Partiel01.LibTests
             Assert.False(purchaseResult.IsValid);
             Assert.NotEmpty(purchaseResult.Error);
             Assert.Equal("adresse inexistante", purchaseResult.Error);
+        }
+
+        //Laura a : un panier de 3 articles, sélectionné son adresse de livraison, sélectionné mode paiement CB.
+        //Lorsque Laura valide son achat
+        //Que l’adresse de livraison existe
+        //Que tous les articles sont disponibles
+        //Que la banque confirme le paiement
+        //Alors l’achat est validé
+        [Fact]
+        public void LauraBuyAndThePurchaseIsValid()
+        {
+            Purchase purchase = new Purchase();
+
+            PurchaseResult purchaseResult = purchase.Confirm();
+
+            Assert.True(purchaseResult.IsValid);
         }
     }
 }

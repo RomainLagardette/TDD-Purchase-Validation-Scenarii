@@ -7,6 +7,10 @@ namespace TDD.Partiel01.Lib
         private Item item;
         private Address address;
 
+        public Purchase()
+        {
+        }
+
         public Purchase(Item item)
         {
             this.item = item;
