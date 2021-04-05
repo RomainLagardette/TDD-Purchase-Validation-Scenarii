@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using TDD.Partiel01.Lib;
 using Xunit;
 
 namespace TDD.Partiel01.LibTests
@@ -19,25 +20,6 @@ namespace TDD.Partiel01.LibTests
 
             Assert.False(purchaseResult.IsValid);
             Assert.NotEmpty(purchaseResult.Error);
-        }
-    }
-
-    internal class PurchaseResult
-    {
-        public bool IsValid { get; internal set; }
-        public string Error { get; internal set; }
-
-        public PurchaseResult(string error)
-        {
-            Error = error;
-        }
-    }
-
-    internal class Purchase
-    {
-        internal static PurchaseResult Confirm()
-        {
-            return new PurchaseResult("solde insuffisant");
         }
     }
 }
