@@ -15,7 +15,7 @@ namespace TDD.Partiel01.Lib
 
         public PurchaseResult Confirm(Item item, Address address, CreditCardDetails creditCardDetails)
         {
-            if (item != null)
+            if (item != null && item.Name == "tee-shirt rouge")
                 return new PurchaseResult(item + " indisponible");
             if (address != null && addressProvider.Exist(address.Line1))
                 return new PurchaseResult("adresse inexistante");

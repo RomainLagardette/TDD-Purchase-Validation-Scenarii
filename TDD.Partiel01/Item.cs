@@ -6,16 +6,16 @@ namespace TDD.Partiel01.Lib
 {
     public class Item
     {
-        private readonly string name;
+        public string Name { get; private set; }
 
         public Item(string name)
         {
-            this.name = name;
+            Name = name;
         }
 
         public override string ToString()
         {
-            return name;
+            return Name;
         }
     }
 }
