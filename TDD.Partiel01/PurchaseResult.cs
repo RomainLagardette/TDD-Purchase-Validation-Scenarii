@@ -27,5 +27,11 @@ namespace TDD.Partiel01.Lib
             Errors.Add(error);
             IsValid = false;
         }
+
+        public void AddError(List<string> errors)
+        {
+            Errors.AddRange(errors);
+            IsValid = false;
+        }
     }
 }

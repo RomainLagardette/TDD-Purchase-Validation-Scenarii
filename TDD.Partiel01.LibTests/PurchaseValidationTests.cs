@@ -9,7 +9,7 @@ namespace TDD.Partiel01.LibTests
 {
     public class PurchaseValidationTests
     {
-        private Purchase NewPurchase => new Purchase(new InMemoryCreditCardPayment(), new InMemoryAddressProvider());
+        private Purchase NewPurchase => new Purchase(new InMemoryCreditCardPayment(), new InMemoryAddressProvider(), new InMemoryItems());
 
         private List<Item> NewItems(params string[] itemsName)
         {
