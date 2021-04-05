@@ -21,6 +21,8 @@ namespace TDD.Partiel01.Lib
         {
             if (item != null)
                 return new PurchaseResult(item + " indisponible");
+            if (address != null)
+                return new PurchaseResult("adresse inexistante");
             return new PurchaseResult("solde insuffisant");
         }
     }
