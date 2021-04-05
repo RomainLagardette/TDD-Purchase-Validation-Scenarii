@@ -31,8 +31,8 @@ namespace TDD.Partiel01.LibTests
             PurchaseResult purchaseResult = purchase.Confirm(items, address, creditCardDetails);
 
             Assert.False(purchaseResult.IsValid);
-            Assert.NotEmpty(purchaseResult.Error);
-            Assert.Equal("solde insuffisant", purchaseResult.Error);
+            Assert.NotEmpty(purchaseResult.Errors);
+            Assert.Equal("solde insuffisant", purchaseResult.Errors.First());
         }
 
         //Kevin a : 
@@ -59,8 +59,8 @@ namespace TDD.Partiel01.LibTests
             PurchaseResult purchaseResult = purchase.Confirm(items, address, creditCardDetails);
 
             Assert.False(purchaseResult.IsValid);
-            Assert.NotEmpty(purchaseResult.Error);
-            Assert.Equal("tee-shirt rouge indisponible", purchaseResult.Error);
+            Assert.NotEmpty(purchaseResult.Errors);
+            Assert.Equal("tee-shirt rouge indisponible", purchaseResult.Errors.First());
         }
 
         //John a : 
@@ -86,8 +86,8 @@ namespace TDD.Partiel01.LibTests
             PurchaseResult purchaseResult = purchase.Confirm(items, address, creditCardDetails);
 
             Assert.False(purchaseResult.IsValid);
-            Assert.NotEmpty(purchaseResult.Error);
-            Assert.Equal("adresse inexistante", purchaseResult.Error);
+            Assert.NotEmpty(purchaseResult.Errors);
+            Assert.Equal("adresse inexistante", purchaseResult.Errors.First());
         }
 
         //Laura a :
@@ -143,6 +143,8 @@ namespace TDD.Partiel01.LibTests
             PurchaseResult purchaseResult = purchase.Confirm(items, address, creditCardDetails);
 
             Assert.False(purchaseResult.IsValid);
+            Assert.NotEmpty(purchaseResult.Errors);
+            Assert.True(purchaseResult.Errors.Any(_=>_ == "adresse inexistante"));
         }
     }
 }
