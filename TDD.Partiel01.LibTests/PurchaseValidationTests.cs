@@ -14,7 +14,9 @@ namespace TDD.Partiel01.LibTests
         [Fact]
         public void AnnaBuyButBankRejectPayment()
         {
-            PurchaseResult purchaseResult = new Purchase().Confirm();
+            CreditCardDetails creditCardDetails = new CreditCardDetails();
+
+            PurchaseResult purchaseResult = new Purchase(creditCardDetails).Confirm();
 
             Assert.False(purchaseResult.IsValid);
             Assert.NotEmpty(purchaseResult.Error);
