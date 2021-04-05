@@ -31,6 +31,7 @@ namespace TDD.Partiel01.LibTests
 
             Assert.False(purchaseResult.IsValid);
             Assert.NotEmpty(purchaseResult.Error);
+            Assert.Equal("tee-shirt rouge indisponible", purchaseResult.Error);
         }
     }
 }
