@@ -19,10 +19,11 @@ namespace TDD.Partiel01.LibTests
         {
             CreditCardDetails creditCardDetails = new CreditCardDetails("9745965412543654");
 
-            PurchaseResult purchaseResult = new Purchase().Confirm(null, null, creditCardDetails);
+            PurchaseResult purchaseResult = new Purchase(new InMemoryCreditCardPayment()).Confirm(null, null, creditCardDetails);
 
             Assert.False(purchaseResult.IsValid);
             Assert.NotEmpty(purchaseResult.Error);
+            Assert.Equal("solde insuffisant", purchaseResult.Error);
         }
 
         //Kevin a : 
@@ -37,7 +38,7 @@ namespace TDD.Partiel01.LibTests
         {
             CreditCardDetails creditCardDetails = new CreditCardDetails("7895265452543153");
             Item item = new Item("tee-shirt rouge");
-            Purchase purchase = new Purchase();
+            Purchase purchase = new Purchase(new InMemoryCreditCardPayment());
 
             PurchaseResult purchaseResult = purchase.Confirm(item, null, creditCardDetails);
 
@@ -58,7 +59,7 @@ namespace TDD.Partiel01.LibTests
         {
             CreditCardDetails creditCardDetails = new CreditCardDetails("7526215354358945");
             Address address = new Address();
-            Purchase purchase = new Purchase();
+            Purchase purchase = new Purchase(new InMemoryCreditCardPayment());
 
             PurchaseResult purchaseResult = purchase.Confirm(null, address, creditCardDetails);
 
@@ -81,7 +82,7 @@ namespace TDD.Partiel01.LibTests
         {
             CreditCardDetails creditCardDetails = new CreditCardDetails("6546597543445912");
 
-            Purchase purchase = new Purchase();
+            Purchase purchase = new Purchase(new InMemoryCreditCardPayment());
 
             PurchaseResult purchaseResult = purchase.Confirm(null, null, creditCardDetails);
 

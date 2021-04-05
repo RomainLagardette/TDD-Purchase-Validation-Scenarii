@@ -4,8 +4,11 @@ namespace TDD.Partiel01.Lib
 {
     public class Purchase
     {
-        public Purchase()
+        private ICreditCardPayment creditCardPayment;
+
+        public Purchase(ICreditCardPayment creditCardPayment)
         {
+            this.creditCardPayment = creditCardPayment;
         }
 
         public PurchaseResult Confirm(Item item, Address address, CreditCardDetails creditCardDetails)
@@ -14,8 +17,8 @@ namespace TDD.Partiel01.Lib
                 return new PurchaseResult(item + " indisponible");
             if (address != null)
                 return new PurchaseResult("adresse inexistante");
-            if (creditCardDetails != null && creditCardDetails.Number != "6546597543445912")
-                return new PurchaseResult("adresse inexistante");
+            if (creditCardDetails != null && !creditCardPayment.Process(creditCardDetails))
+                return new PurchaseResult("solde insuffisant");
             return new PurchaseResult();
         }
     }
