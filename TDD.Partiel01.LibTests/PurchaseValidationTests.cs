@@ -17,6 +17,7 @@ namespace TDD.Partiel01.LibTests
             PurchaseResult purchaseResult = Purchase.Confirm();
 
             Assert.False(purchaseResult.IsValid);
+            Assert.NotEmpty(purchaseResult.Error);
         }
     }
 
