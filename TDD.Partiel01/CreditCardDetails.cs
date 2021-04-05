@@ -6,5 +6,11 @@ namespace TDD.Partiel01.Lib
 {
     public class CreditCardDetails
     {
+        public string Number { get; private set; }
+
+        public CreditCardDetails(string number)
+        {
+            this.Number = number;
+        }
     }
 }
