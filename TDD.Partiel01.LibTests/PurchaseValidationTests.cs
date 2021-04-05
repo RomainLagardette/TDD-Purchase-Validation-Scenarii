@@ -103,10 +103,11 @@ namespace TDD.Partiel01.LibTests
         public void MarieBuyButAddressIsInexistantAndOneArticleIsNoLongerAvailableAndBankRejectPayment()
         {
             CreditCardDetails creditCardDetails = new CreditCardDetails("1265599754346544");
+            Address address = new Address("98 Avenue du saucisson");
 
             Purchase purchase = new Purchase(new InMemoryCreditCardPayment());
 
-            PurchaseResult purchaseResult = purchase.Confirm(null, null, creditCardDetails);
+            PurchaseResult purchaseResult = purchase.Confirm(null, address, creditCardDetails);
 
             Assert.False(purchaseResult.IsValid);
         }
