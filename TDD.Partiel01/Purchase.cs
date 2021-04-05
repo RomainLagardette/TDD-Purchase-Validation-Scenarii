@@ -17,13 +17,14 @@ namespace TDD.Partiel01.Lib
 
         public PurchaseResult Confirm(List<Item> items, Address address, CreditCardDetails creditCardDetails)
         {
+            PurchaseResult purchaseResult = new PurchaseResult();
             if (items != null && items.Any(_=>_.Name == "tee-shirt rouge"))
-                return new PurchaseResult("tee-shirt rouge" + " indisponible");
+                purchaseResult.AddError("tee-shirt rouge" + " indisponible");
             if (address != null && addressProvider.Exist(address.Line1))
-                return new PurchaseResult("adresse inexistante");
+                purchaseResult.AddError("adresse inexistante");
             if (creditCardDetails != null && !creditCardPayment.Process(creditCardDetails))
-                return new PurchaseResult("solde insuffisant");
-            return new PurchaseResult();
+                purchaseResult.AddError("solde insuffisant");
+            return purchaseResult;
         }
     }
 }
