@@ -6,6 +6,7 @@ namespace TDD.Partiel01.Lib
     {
         private Item item;
         private Address address;
+        private CreditCardDetails creditCardDetails;
 
         public Purchase()
         {
@@ -14,6 +15,11 @@ namespace TDD.Partiel01.Lib
         public Purchase(Item item)
         {
             this.item = item;
+        }
+
+        public Purchase(CreditCardDetails creditCardDetails)
+        {
+            this.creditCardDetails = creditCardDetails;
         }
 
         public Purchase(Item item, Address address) : this(item)
@@ -27,7 +33,9 @@ namespace TDD.Partiel01.Lib
                 return new PurchaseResult(item + " indisponible");
             if (address != null)
                 return new PurchaseResult("adresse inexistante");
-            return new PurchaseResult("solde insuffisant");
+            if (creditCardDetails != null)
+                return new PurchaseResult("adresse inexistante");
+            return new PurchaseResult();
         }
     }
 }

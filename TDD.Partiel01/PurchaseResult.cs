@@ -13,5 +13,10 @@ namespace TDD.Partiel01.Lib
         {
             Error = error;
         }
+
+        public PurchaseResult()
+        {
+            IsValid = true;
+        }
     }
 }
