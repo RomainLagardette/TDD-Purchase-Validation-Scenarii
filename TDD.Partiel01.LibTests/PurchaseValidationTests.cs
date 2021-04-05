@@ -14,9 +14,9 @@ namespace TDD.Partiel01.LibTests
         [Fact]
         public void AnnaBuyButBankRejectPayment()
         {
-            bool isValid = Purchase.Confirm();
+            PurchaseResult purchaseResult = Purchase.Confirm();
 
-            Assert.False(isValid);
+            Assert.False(purchaseResult.IsValid);
         }
     }
 
