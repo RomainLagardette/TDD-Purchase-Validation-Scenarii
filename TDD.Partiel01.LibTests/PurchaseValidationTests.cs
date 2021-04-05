@@ -14,7 +14,7 @@ namespace TDD.Partiel01.LibTests
         [Fact]
         public void AnnaBuyButBankRejectPayment()
         {
-            PurchaseResult purchaseResult = Purchase.Confirm();
+            PurchaseResult purchaseResult = new Purchase(null).Confirm();
 
             Assert.False(purchaseResult.IsValid);
             Assert.NotEmpty(purchaseResult.Error);
@@ -27,7 +27,10 @@ namespace TDD.Partiel01.LibTests
         [Fact]
         public void KevinBuyButOneArticleIsNoLongerAvailable()
         {
-            PurchaseResult purchaseResult = Purchase.Confirm();
+            Item item = new Item("tee-shirt rouge");
+            Purchase purchase = new Purchase(item);
+
+            PurchaseResult purchaseResult = purchase.Confirm();
 
             Assert.False(purchaseResult.IsValid);
             Assert.NotEmpty(purchaseResult.Error);
