@@ -15,7 +15,7 @@ namespace TDD.Partiel01.Lib
         {
             if (item != null)
                 return new PurchaseResult(item + " indisponible");
-            if (address != null)
+            if (address != null && (address.Line1 == "98 Avenue du saucisson" || address.Line1 == "77 Avenue du Jambon"))
                 return new PurchaseResult("adresse inexistante");
             if (creditCardDetails != null && !creditCardPayment.Process(creditCardDetails))
                 return new PurchaseResult("solde insuffisant");

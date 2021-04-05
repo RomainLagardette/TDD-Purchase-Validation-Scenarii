@@ -58,7 +58,7 @@ namespace TDD.Partiel01.LibTests
         public void JohnBuyButAddressIsInexistant()
         {
             CreditCardDetails creditCardDetails = new CreditCardDetails("7526215354358945");
-            Address address = new Address();
+            Address address = new Address("77 Avenue du Jambon");
             Purchase purchase = new Purchase(new InMemoryCreditCardPayment());
 
             PurchaseResult purchaseResult = purchase.Confirm(null, address, creditCardDetails);
