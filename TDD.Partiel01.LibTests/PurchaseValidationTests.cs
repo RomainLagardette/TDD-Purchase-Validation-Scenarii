@@ -51,6 +51,7 @@ namespace TDD.Partiel01.LibTests
 
             Assert.False(purchaseResult.IsValid);
             Assert.NotEmpty(purchaseResult.Error);
+            Assert.Equal("adresse inexistante", purchaseResult.Error);
         }
     }
 }
