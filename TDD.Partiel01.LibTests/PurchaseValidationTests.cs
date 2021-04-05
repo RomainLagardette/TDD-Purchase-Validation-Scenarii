@@ -20,11 +20,16 @@ namespace TDD.Partiel01.LibTests
         }
     }
 
+    internal class PurchaseResult
+    {
+        public bool IsValid { get; internal set; }
+    }
+
     internal class Purchase
     {
-        internal static bool Confirm()
+        internal static PurchaseResult Confirm()
         {
-            return false;
+            return new PurchaseResult();
         }
     }
 }
