@@ -11,6 +11,11 @@ namespace TDD.Partiel01.LibTests
     {
         private Purchase NewPurchase => new Purchase(new InMemoryCreditCardPayment(), new InMemoryAddressProvider());
 
+        private List<Item> NewItems(params string[] itemsName)
+        {
+            return itemsName.Select(_ => new Item(_)).ToList();
+        }
+
         //Anna a : 
         //- un panier de 2 articles « chemise verte » et « pantalon noir »
         //- sélectionné son adresse de livraison « 55 Rue du Faubourg Saint-Honoré »
@@ -21,11 +26,7 @@ namespace TDD.Partiel01.LibTests
         [Fact]
         public void AnnaBuyButBankRejectPayment()
         {
-            List<Item> items = new List<Item>
-            {
-                new Item("chemise verte"),
-                new Item("pantalon noir"),
-            };
+            List<Item> items = NewItems("chemise verte", "pantalon noir");
             CreditCardDetails creditCardDetails = new CreditCardDetails("9745965412543654");
             Address address = new Address("55 Rue du Faubourg Saint-Honoré");
 
@@ -46,12 +47,7 @@ namespace TDD.Partiel01.LibTests
         [Fact]
         public void KevinBuyButOneArticleIsNoLongerAvailable()
         {
-            List<Item> items = new List<Item>
-            {
-                new Item("tee-shirt rouge"),
-                new Item("short blanc"),
-                new Item("pull violet"),
-            };
+            List<Item> items = NewItems("tee-shirt rouge", "short blanc", "pull violet");
             CreditCardDetails creditCardDetails = new CreditCardDetails("7895265452543153");
             Address address = new Address("1 Avenue du Colonel Henri Rol-Tanguy");
 
@@ -72,11 +68,7 @@ namespace TDD.Partiel01.LibTests
         [Fact]
         public void JohnBuyButAddressIsInexistant()
         {
-            List<Item> items = new List<Item>
-            {
-                new Item("pull rouge"),
-                new Item("pull violet"),
-            };
+            List<Item> items = NewItems("pull rouge", "pull violet");
             CreditCardDetails creditCardDetails = new CreditCardDetails("7526215354358945");
             Address address = new Address("77 Avenue du Jambon");
 
@@ -99,11 +91,7 @@ namespace TDD.Partiel01.LibTests
         [Fact]
         public void LauraBuyAndThePurchaseIsValid()
         {
-            List<Item> items = new List<Item>
-            {
-                new Item("pull rouge"),
-                new Item("pantalon noir")
-            };
+            List<Item> items = NewItems("pull rouge", "pantalon noir");
             CreditCardDetails creditCardDetails = new CreditCardDetails("6546597543445912");
             Address address = new Address("55 Rue du Faubourg Saint-Honoré");
 
@@ -125,11 +113,7 @@ namespace TDD.Partiel01.LibTests
         [Fact]
         public void MarieBuyButAddressIsInexistantAndOneArticleIsNoLongerAvailableAndBankRejectPayment()
         {
-            List<Item> items = new List<Item>
-            {
-                new Item("tee-shirt rouge"),
-                new Item("pull rose"),
-            };
+            List<Item> items = NewItems("tee-shirt rouge", "pull rose");
             CreditCardDetails creditCardDetails = new CreditCardDetails("1265599754346544");
             Address address = new Address("98 Avenue du saucisson");
 
