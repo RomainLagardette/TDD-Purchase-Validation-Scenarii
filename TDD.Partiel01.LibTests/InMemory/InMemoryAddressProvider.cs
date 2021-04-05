@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using TDD.Partiel01.Lib;
+using TDD.Partiel01.Lib.Ports;
 
-namespace TDD.Partiel01.LibTests
+namespace TDD.Partiel01.LibTests.InMemory
 {
     public class InMemoryAddressProvider : IAddressProvider
     {

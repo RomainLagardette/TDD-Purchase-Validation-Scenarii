@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using TDD.Partiel01.Lib.Ports;
 
-namespace TDD.Partiel01.Lib
+namespace TDD.Partiel01.Lib.Purchases
 {
     public class Purchase
     {
-        private ICreditCardPayment creditCardPayment;
-        private IAddressProvider addressProvider;
-        private IItemCatalog itemCatalog;
+        private readonly ICreditCardPayment creditCardPayment;
+        private readonly IAddressProvider addressProvider;
+        private readonly IItemCatalog itemCatalog;
 
         public Purchase(ICreditCardPayment creditCardPayment, IAddressProvider addressProvider, IItemCatalog itemCatalog)
         {

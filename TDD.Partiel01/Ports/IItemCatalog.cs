@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using TDD.Partiel01.Lib.Purchases;
 
-namespace TDD.Partiel01.Lib
+namespace TDD.Partiel01.Lib.Ports
 {
     public interface IItemCatalog
     {

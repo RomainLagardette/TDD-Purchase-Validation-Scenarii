@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TDD.Partiel01.Lib;
+using TDD.Partiel01.Lib.Purchases;
+using TDD.Partiel01.LibTests.InMemory;
 using Xunit;
 
 namespace TDD.Partiel01.LibTests

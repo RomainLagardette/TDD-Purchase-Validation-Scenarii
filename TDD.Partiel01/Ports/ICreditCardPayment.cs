@@ -1,4 +1,6 @@
-﻿namespace TDD.Partiel01.Lib
+﻿using TDD.Partiel01.Lib.Purchases;
+
+namespace TDD.Partiel01.Lib.Ports
 {
     public interface ICreditCardPayment
     {

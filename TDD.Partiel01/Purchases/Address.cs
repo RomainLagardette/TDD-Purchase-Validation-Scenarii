@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TDD.Partiel01.Lib
+namespace TDD.Partiel01.Lib.Purchases
 {
     public class Address
     {
