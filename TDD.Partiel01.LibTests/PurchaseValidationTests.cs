@@ -12,10 +12,11 @@ namespace TDD.Partiel01.LibTests
 
 
         [Fact]
-        public void Test1()
+        public void AnnaBuyButBankRejectPayment()
         {
-    
+            bool isValid = Purchase.Confirm();
 
+            Assert.False(isValid);
         }
     }
 }
