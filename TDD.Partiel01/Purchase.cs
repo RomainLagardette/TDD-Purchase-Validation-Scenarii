@@ -5,10 +5,16 @@ namespace TDD.Partiel01.Lib
     public class Purchase
     {
         private Item item;
+        private Address address;
 
         public Purchase(Item item)
         {
             this.item = item;
+        }
+
+        public Purchase(Item item, Address address) : this(item)
+        {
+            this.address = address;
         }
 
         public PurchaseResult Confirm()
