@@ -4,18 +4,11 @@ namespace TDD.Partiel01.Lib
 {
     public class Purchase
     {
-        private Item item;
-        private Address address;
-        private CreditCardDetails creditCardDetails;
-
-        public Purchase(Item item, Address address, CreditCardDetails creditCardDetails)
+        public Purchase()
         {
-            this.item = item;
-            this.address = address;
-            this.creditCardDetails = creditCardDetails;
         }
 
-        public PurchaseResult Confirm()
+        public PurchaseResult Confirm(Item item, Address address, CreditCardDetails creditCardDetails)
         {
             if (item != null)
                 return new PurchaseResult(item + " indisponible");

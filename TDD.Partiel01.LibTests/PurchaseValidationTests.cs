@@ -19,7 +19,7 @@ namespace TDD.Partiel01.LibTests
         {
             CreditCardDetails creditCardDetails = new CreditCardDetails("9745965412543654");
 
-            PurchaseResult purchaseResult = new Purchase(null, null, creditCardDetails).Confirm();
+            PurchaseResult purchaseResult = new Purchase().Confirm(null, null, creditCardDetails);
 
             Assert.False(purchaseResult.IsValid);
             Assert.NotEmpty(purchaseResult.Error);
@@ -37,9 +37,9 @@ namespace TDD.Partiel01.LibTests
         {
             CreditCardDetails creditCardDetails = new CreditCardDetails("7895265452543153");
             Item item = new Item("tee-shirt rouge");
-            Purchase purchase = new Purchase(item, null, creditCardDetails);
+            Purchase purchase = new Purchase();
 
-            PurchaseResult purchaseResult = purchase.Confirm();
+            PurchaseResult purchaseResult = purchase.Confirm(item, null, creditCardDetails);
 
             Assert.False(purchaseResult.IsValid);
             Assert.NotEmpty(purchaseResult.Error);
@@ -58,9 +58,9 @@ namespace TDD.Partiel01.LibTests
         {
             CreditCardDetails creditCardDetails = new CreditCardDetails("7526215354358945");
             Address address = new Address();
-            Purchase purchase = new Purchase(null, address, creditCardDetails);
+            Purchase purchase = new Purchase();
 
-            PurchaseResult purchaseResult = purchase.Confirm();
+            PurchaseResult purchaseResult = purchase.Confirm(null, address, creditCardDetails);
 
             Assert.False(purchaseResult.IsValid);
             Assert.NotEmpty(purchaseResult.Error);
@@ -81,9 +81,9 @@ namespace TDD.Partiel01.LibTests
         {
             CreditCardDetails creditCardDetails = new CreditCardDetails("6546597543445912");
 
-            Purchase purchase = new Purchase(null, null, creditCardDetails);
+            Purchase purchase = new Purchase();
 
-            PurchaseResult purchaseResult = purchase.Confirm();
+            PurchaseResult purchaseResult = purchase.Confirm(null, null, creditCardDetails);
 
             Assert.True(purchaseResult.IsValid);
         }

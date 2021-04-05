@@ -6,7 +6,7 @@ namespace TDD.Partiel01.Lib
 {
     public class Item
     {
-        private string name;
+        private readonly string name;
 
         public Item(string name)
         {
