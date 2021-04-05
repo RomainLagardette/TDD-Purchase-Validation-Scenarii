@@ -88,5 +88,27 @@ namespace TDD.Partiel01.LibTests
 
             Assert.True(purchaseResult.IsValid);
         }
+
+        //Marie a : 
+        //- un panier de 2 articles « tee-shirt rouge » et « pull rose » 
+        //- sélectionné son adresse de livraison « 98 Avenue du saucisson » 
+        //- renseigné sa CB « 1265599754346544 »
+        //Lorsque Marie valide son achat
+        //Mais que sa banque rejette le paiement pour solde insuffisant
+        //Et que les 2 articles ne sont plus disponible(après vérification des données (catalog))
+        //Et que l’adresse de livraison n’existe pas(vérification dans un moteur de recherche (provider))
+        //Alors tous les messages d’erreur sont retourné et l’achat n’est pas validé
+
+        [Fact]
+        public void MarieBuyButAddressIsInexistantAndOneArticleIsNoLongerAvailableAndBankRejectPayment()
+        {
+            CreditCardDetails creditCardDetails = new CreditCardDetails("1265599754346544");
+
+            Purchase purchase = new Purchase(new InMemoryCreditCardPayment());
+
+            PurchaseResult purchaseResult = purchase.Confirm(null, null, creditCardDetails);
+
+            Assert.False(purchaseResult.IsValid);
+        }
     }
 }
