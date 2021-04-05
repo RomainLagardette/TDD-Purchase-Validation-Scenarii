@@ -81,7 +81,7 @@ namespace TDD.Partiel01.LibTests
         {
             CreditCardDetails creditCardDetails = new CreditCardDetails("6546597543445912");
 
-            Purchase purchase = new Purchase(creditCardDetails);
+            Purchase purchase = new Purchase(null, null, creditCardDetails);
 
             PurchaseResult purchaseResult = purchase.Confirm();
 

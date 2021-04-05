@@ -8,23 +8,11 @@ namespace TDD.Partiel01.Lib
         private Address address;
         private CreditCardDetails creditCardDetails;
 
-        public Purchase()
-        {
-        }
-
-        public Purchase(Item item)
+        public Purchase(Item item, Address address, CreditCardDetails creditCardDetails)
         {
             this.item = item;
-        }
-
-        public Purchase(CreditCardDetails creditCardDetails)
-        {
-            this.creditCardDetails = creditCardDetails;
-        }
-
-        public Purchase(Item item, Address address) : this(item)
-        {
             this.address = address;
+            this.creditCardDetails = creditCardDetails;
         }
 
         public PurchaseResult Confirm()
