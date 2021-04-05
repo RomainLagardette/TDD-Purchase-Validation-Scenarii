@@ -145,7 +145,9 @@ namespace TDD.Partiel01.LibTests
 
             Assert.False(purchaseResult.IsValid);
             Assert.NotEmpty(purchaseResult.Errors);
-            Assert.True(purchaseResult.Errors.Any(_=>_ == "adresse inexistante"));
+            Assert.Contains(purchaseResult.Errors, _ => _ == "tee-shirt rouge indisponible");
+            Assert.Contains(purchaseResult.Errors, _ => _ == "adresse inexistante");
+            Assert.Contains(purchaseResult.Errors, _ => _ == "solde insuffisant");
         }
     }
 }
