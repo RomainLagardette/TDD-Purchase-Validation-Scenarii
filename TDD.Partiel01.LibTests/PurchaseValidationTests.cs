@@ -19,7 +19,9 @@ namespace TDD.Partiel01.LibTests
         {
             CreditCardDetails creditCardDetails = new CreditCardDetails("9745965412543654");
 
-            PurchaseResult purchaseResult = new Purchase(new InMemoryCreditCardPayment()).Confirm(null, null, creditCardDetails);
+            Purchase purchase = new Purchase(new InMemoryCreditCardPayment(), new InMemoryAddressProvider());
+
+            PurchaseResult purchaseResult = purchase.Confirm(null, null, creditCardDetails);
 
             Assert.False(purchaseResult.IsValid);
             Assert.NotEmpty(purchaseResult.Error);
@@ -38,7 +40,8 @@ namespace TDD.Partiel01.LibTests
         {
             CreditCardDetails creditCardDetails = new CreditCardDetails("7895265452543153");
             Item item = new Item("tee-shirt rouge");
-            Purchase purchase = new Purchase(new InMemoryCreditCardPayment());
+
+            Purchase purchase = new Purchase(new InMemoryCreditCardPayment(), new InMemoryAddressProvider());
 
             PurchaseResult purchaseResult = purchase.Confirm(item, null, creditCardDetails);
 
@@ -59,7 +62,8 @@ namespace TDD.Partiel01.LibTests
         {
             CreditCardDetails creditCardDetails = new CreditCardDetails("7526215354358945");
             Address address = new Address("77 Avenue du Jambon");
-            Purchase purchase = new Purchase(new InMemoryCreditCardPayment());
+
+            Purchase purchase = new Purchase(new InMemoryCreditCardPayment(), new InMemoryAddressProvider());
 
             PurchaseResult purchaseResult = purchase.Confirm(null, address, creditCardDetails);
 
@@ -82,7 +86,7 @@ namespace TDD.Partiel01.LibTests
         {
             CreditCardDetails creditCardDetails = new CreditCardDetails("6546597543445912");
 
-            Purchase purchase = new Purchase(new InMemoryCreditCardPayment());
+            Purchase purchase = new Purchase(new InMemoryCreditCardPayment(), new InMemoryAddressProvider());
 
             PurchaseResult purchaseResult = purchase.Confirm(null, null, creditCardDetails);
 
@@ -105,11 +109,21 @@ namespace TDD.Partiel01.LibTests
             CreditCardDetails creditCardDetails = new CreditCardDetails("1265599754346544");
             Address address = new Address("98 Avenue du saucisson");
 
-            Purchase purchase = new Purchase(new InMemoryCreditCardPayment());
+            Purchase purchase = new Purchase(new InMemoryCreditCardPayment(), new InMemoryAddressProvider());
 
             PurchaseResult purchaseResult = purchase.Confirm(null, address, creditCardDetails);
 
             Assert.False(purchaseResult.IsValid);
+        }
+
+         //== "98 Avenue du saucisson" || address.Line1 == "77 Avenue du Jambon"
+    }
+
+    public class InMemoryAddressProvider : IAddressProvider
+    {
+        public bool Exist(string line1)
+        {
+            return true;
         }
     }
 }
