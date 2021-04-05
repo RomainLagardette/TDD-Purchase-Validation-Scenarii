@@ -9,7 +9,7 @@ namespace TDD.Partiel01.LibTests
     {
         public bool Process(CreditCardDetails creditCardDetails)
         {
-            return creditCardDetails.Number != "9745965412543654";
+            return creditCardDetails.Number != "9745965412543654" && creditCardDetails.Number != "1265599754346544";
         }
     }
 }
