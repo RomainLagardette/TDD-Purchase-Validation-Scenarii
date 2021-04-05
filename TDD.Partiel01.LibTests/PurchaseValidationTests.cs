@@ -26,11 +26,11 @@ namespace TDD.Partiel01.LibTests
         }
 
         //Kevin a : 
-        //- un panier de 3 articles « tee-shirt bleu » et « short blanc » et « pull violet »
+        //- un panier de 3 articles « tee-shirt rouge » et « short blanc » et « pull violet »
         //- sélectionné son adresse de livraison « 1 Avenue du Colonel Henri Rol-Tanguy »
         //- renseigné sa CB « 7895265452543153 »
         //Lorsque Kevin valide son achat
-        //Mais que l’article « short blanc » n’est plus disponible(après vérification des données (catalog))
+        //Mais que l’article « tee-shirt rouge » n’est plus disponible(après vérification des données (catalog))
         //Alors le nom de l’article manquant est retourné et l’achat n’est pas validé
         [Fact]
         public void KevinBuyButOneArticleIsNoLongerAvailable()
