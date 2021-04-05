@@ -14,7 +14,7 @@ namespace TDD.Partiel01.LibTests
         [Fact]
         public void AnnaBuyButBankRejectPayment()
         {
-            CreditCardDetails creditCardDetails = new CreditCardDetails();
+            CreditCardDetails creditCardDetails = new CreditCardDetails("1234");
 
             PurchaseResult purchaseResult = new Purchase(creditCardDetails).Confirm();
 
@@ -65,7 +65,9 @@ namespace TDD.Partiel01.LibTests
         [Fact]
         public void LauraBuyAndThePurchaseIsValid()
         {
-            Purchase purchase = new Purchase();
+            CreditCardDetails creditCardDetails = new CreditCardDetails("9745965412543654");
+
+            Purchase purchase = new Purchase(creditCardDetails);
 
             PurchaseResult purchaseResult = purchase.Confirm();
 
