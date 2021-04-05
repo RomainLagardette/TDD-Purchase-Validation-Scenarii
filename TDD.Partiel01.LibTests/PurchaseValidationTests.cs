@@ -18,10 +18,11 @@ namespace TDD.Partiel01.LibTests
         public void AnnaBuyButBankRejectPayment()
         {
             CreditCardDetails creditCardDetails = new CreditCardDetails("9745965412543654");
+            Address address = new Address("55 Rue du Faubourg Saint-Honoré");
 
             Purchase purchase = new Purchase(new InMemoryCreditCardPayment(), new InMemoryAddressProvider());
 
-            PurchaseResult purchaseResult = purchase.Confirm(null, null, creditCardDetails);
+            PurchaseResult purchaseResult = purchase.Confirm(null, address, creditCardDetails);
 
             Assert.False(purchaseResult.IsValid);
             Assert.NotEmpty(purchaseResult.Error);
@@ -39,11 +40,12 @@ namespace TDD.Partiel01.LibTests
         public void KevinBuyButOneArticleIsNoLongerAvailable()
         {
             CreditCardDetails creditCardDetails = new CreditCardDetails("7895265452543153");
+            Address address = new Address("1 Avenue du Colonel Henri Rol-Tanguy");
             Item item = new Item("tee-shirt rouge");
 
             Purchase purchase = new Purchase(new InMemoryCreditCardPayment(), new InMemoryAddressProvider());
 
-            PurchaseResult purchaseResult = purchase.Confirm(item, null, creditCardDetails);
+            PurchaseResult purchaseResult = purchase.Confirm(item, address, creditCardDetails);
 
             Assert.False(purchaseResult.IsValid);
             Assert.NotEmpty(purchaseResult.Error);
@@ -85,10 +87,11 @@ namespace TDD.Partiel01.LibTests
         public void LauraBuyAndThePurchaseIsValid()
         {
             CreditCardDetails creditCardDetails = new CreditCardDetails("6546597543445912");
+            Address address = new Address("55 Rue du Faubourg Saint-Honoré");
 
             Purchase purchase = new Purchase(new InMemoryCreditCardPayment(), new InMemoryAddressProvider());
 
-            PurchaseResult purchaseResult = purchase.Confirm(null, null, creditCardDetails);
+            PurchaseResult purchaseResult = purchase.Confirm(null, address, creditCardDetails);
 
             Assert.True(purchaseResult.IsValid);
         }
@@ -114,16 +117,6 @@ namespace TDD.Partiel01.LibTests
             PurchaseResult purchaseResult = purchase.Confirm(null, address, creditCardDetails);
 
             Assert.False(purchaseResult.IsValid);
-        }
-
-         //== "98 Avenue du saucisson" || address.Line1 == "77 Avenue du Jambon"
-    }
-
-    public class InMemoryAddressProvider : IAddressProvider
-    {
-        public bool Exist(string line1)
-        {
-            return true;
         }
     }
 }
