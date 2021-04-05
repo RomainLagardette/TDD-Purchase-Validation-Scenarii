@@ -19,7 +19,7 @@ namespace TDD.Partiel01.LibTests
         {
             CreditCardDetails creditCardDetails = new CreditCardDetails("9745965412543654");
 
-            PurchaseResult purchaseResult = new Purchase(creditCardDetails).Confirm();
+            PurchaseResult purchaseResult = new Purchase(null, null, creditCardDetails).Confirm();
 
             Assert.False(purchaseResult.IsValid);
             Assert.NotEmpty(purchaseResult.Error);
@@ -35,8 +35,9 @@ namespace TDD.Partiel01.LibTests
         [Fact]
         public void KevinBuyButOneArticleIsNoLongerAvailable()
         {
+            CreditCardDetails creditCardDetails = new CreditCardDetails("7895265452543153");
             Item item = new Item("tee-shirt rouge");
-            Purchase purchase = new Purchase(item);
+            Purchase purchase = new Purchase(item, null, creditCardDetails);
 
             PurchaseResult purchaseResult = purchase.Confirm();
 
@@ -55,8 +56,9 @@ namespace TDD.Partiel01.LibTests
         [Fact]
         public void JohnBuyButAddressIsInexistant()
         {
+            CreditCardDetails creditCardDetails = new CreditCardDetails("7526215354358945");
             Address address = new Address();
-            Purchase purchase = new Purchase(null, address);
+            Purchase purchase = new Purchase(null, address, creditCardDetails);
 
             PurchaseResult purchaseResult = purchase.Confirm();
 
