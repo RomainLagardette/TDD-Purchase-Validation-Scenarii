@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using TDD.Partiel01.Lib;
 using Xunit;
 
@@ -17,13 +18,17 @@ namespace TDD.Partiel01.LibTests
         [Fact]
         public void AnnaBuyButBankRejectPayment()
         {
-            Item item = new Item("chemise verte");
+            List<Item> items = new List<Item>
+            {
+                new Item("chemise verte"),
+                new Item("pantalon noir"),
+            };
             CreditCardDetails creditCardDetails = new CreditCardDetails("9745965412543654");
             Address address = new Address("55 Rue du Faubourg Saint-Honoré");
 
             Purchase purchase = new Purchase(new InMemoryCreditCardPayment(), new InMemoryAddressProvider());
 
-            PurchaseResult purchaseResult = purchase.Confirm(item, address, creditCardDetails);
+            PurchaseResult purchaseResult = purchase.Confirm(items, address, creditCardDetails);
 
             Assert.False(purchaseResult.IsValid);
             Assert.NotEmpty(purchaseResult.Error);
@@ -40,13 +45,18 @@ namespace TDD.Partiel01.LibTests
         [Fact]
         public void KevinBuyButOneArticleIsNoLongerAvailable()
         {
-            Item item = new Item("tee-shirt rouge");
+            List<Item> items = new List<Item>
+            {
+                new Item("tee-shirt rouge"),
+                new Item("short blanc"),
+                new Item("pull violet"),
+            };
             CreditCardDetails creditCardDetails = new CreditCardDetails("7895265452543153");
             Address address = new Address("1 Avenue du Colonel Henri Rol-Tanguy");
 
             Purchase purchase = new Purchase(new InMemoryCreditCardPayment(), new InMemoryAddressProvider());
 
-            PurchaseResult purchaseResult = purchase.Confirm(item, address, creditCardDetails);
+            PurchaseResult purchaseResult = purchase.Confirm(items, address, creditCardDetails);
 
             Assert.False(purchaseResult.IsValid);
             Assert.NotEmpty(purchaseResult.Error);
@@ -63,13 +73,17 @@ namespace TDD.Partiel01.LibTests
         [Fact]
         public void JohnBuyButAddressIsInexistant()
         {
-            Item item = new Item("pull rouge");
+            List<Item> items = new List<Item>
+            {
+                new Item("pull rouge"),
+                new Item("pull violet"),
+            };
             CreditCardDetails creditCardDetails = new CreditCardDetails("7526215354358945");
             Address address = new Address("77 Avenue du Jambon");
 
             Purchase purchase = new Purchase(new InMemoryCreditCardPayment(), new InMemoryAddressProvider());
 
-            PurchaseResult purchaseResult = purchase.Confirm(item, address, creditCardDetails);
+            PurchaseResult purchaseResult = purchase.Confirm(items, address, creditCardDetails);
 
             Assert.False(purchaseResult.IsValid);
             Assert.NotEmpty(purchaseResult.Error);
@@ -88,13 +102,17 @@ namespace TDD.Partiel01.LibTests
         [Fact]
         public void LauraBuyAndThePurchaseIsValid()
         {
-            Item item = new Item("pull rouge");
+            List<Item> items = new List<Item>
+            {
+                new Item("pull rouge"),
+                new Item("pantalon noir")
+            };
             CreditCardDetails creditCardDetails = new CreditCardDetails("6546597543445912");
             Address address = new Address("55 Rue du Faubourg Saint-Honoré");
 
             Purchase purchase = new Purchase(new InMemoryCreditCardPayment(), new InMemoryAddressProvider());
 
-            PurchaseResult purchaseResult = purchase.Confirm(item, address, creditCardDetails);
+            PurchaseResult purchaseResult = purchase.Confirm(items, address, creditCardDetails);
 
             Assert.True(purchaseResult.IsValid);
         }
@@ -112,13 +130,17 @@ namespace TDD.Partiel01.LibTests
         [Fact]
         public void MarieBuyButAddressIsInexistantAndOneArticleIsNoLongerAvailableAndBankRejectPayment()
         {
-            Item item = new Item("tee-shirt rouge");
+            List<Item> items = new List<Item>
+            {
+                new Item("tee-shirt rouge"),
+                new Item("pull rose"),
+            };
             CreditCardDetails creditCardDetails = new CreditCardDetails("1265599754346544");
             Address address = new Address("98 Avenue du saucisson");
 
             Purchase purchase = new Purchase(new InMemoryCreditCardPayment(), new InMemoryAddressProvider());
 
-            PurchaseResult purchaseResult = purchase.Confirm(item, address, creditCardDetails);
+            PurchaseResult purchaseResult = purchase.Confirm(items, address, creditCardDetails);
 
             Assert.False(purchaseResult.IsValid);
         }

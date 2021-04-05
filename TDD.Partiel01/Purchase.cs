@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace TDD.Partiel01.Lib
 {
@@ -13,10 +15,10 @@ namespace TDD.Partiel01.Lib
             this.addressProvider = addressProvider;
         }
 
-        public PurchaseResult Confirm(Item item, Address address, CreditCardDetails creditCardDetails)
+        public PurchaseResult Confirm(List<Item> items, Address address, CreditCardDetails creditCardDetails)
         {
-            if (item != null && item.Name == "tee-shirt rouge")
-                return new PurchaseResult(item + " indisponible");
+            if (items != null && items.Any(_=>_.Name == "tee-shirt rouge"))
+                return new PurchaseResult("tee-shirt rouge" + " indisponible");
             if (address != null && addressProvider.Exist(address.Line1))
                 return new PurchaseResult("adresse inexistante");
             if (creditCardDetails != null && !creditCardPayment.Process(creditCardDetails))
