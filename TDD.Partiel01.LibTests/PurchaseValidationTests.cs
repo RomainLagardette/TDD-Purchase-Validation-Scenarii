@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Xunit;
 
 namespace TDD.Partiel01.LibTests
@@ -24,13 +25,19 @@ namespace TDD.Partiel01.LibTests
     internal class PurchaseResult
     {
         public bool IsValid { get; internal set; }
+        public string Error { get; internal set; }
+
+        public PurchaseResult(string error)
+        {
+            Error = error;
+        }
     }
 
     internal class Purchase
     {
         internal static PurchaseResult Confirm()
         {
-            return new PurchaseResult();
+            return new PurchaseResult("solde insuffisant");
         }
     }
 }
