@@ -36,5 +36,21 @@ namespace TDD.Partiel01.LibTests
             Assert.NotEmpty(purchaseResult.Error);
             Assert.Equal("tee-shirt rouge indisponible", purchaseResult.Error);
         }
+
+        //John a : un panier de 4 articles, sélectionné son adresse de livraison, sélectionné mode paiement CB.
+        //Lorsque John valide son achat
+        //Mais que l’adresse de livraison n’existe pas (vérification dans un moteur de recherche (provider))
+        //Alors un message d’erreur est retourné et l’achat n’est pas validé
+        [Fact]
+        public void JohnBuyButAddressIsInexistant()
+        {
+            Address address = new Address();
+            Purchase purchase = new Purchase(null, address);
+
+            PurchaseResult purchaseResult = purchase.Confirm();
+
+            Assert.False(purchaseResult.IsValid);
+            Assert.NotEmpty(purchaseResult.Error);
+        }
     }
 }
